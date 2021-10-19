@@ -1,0 +1,184 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+        <script src="https://kit.fontawesome.com/64d58efce2.js"
+         crossorigin="anonymous"></script>
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/feedback.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.min.css" integrity="sha512-f8mUMCRNrJxPBDzPJx3n+Y5TC5xp6SmStstEfgsDXZJTcxBakoB5hvPLhAfJKa9rCvH+n3xpJ2vQByxLk4WP2g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <title>
+            Feedback
+        </title>
+        <link rel="icon" href="{% static 'images/flogo.png' %}" type="png">
+    </head>
+    <body>
+    <!--<body style="background-color: rgba(0, 0, 0, 0.932)";-->
+        
+        <nav id="header" class="navbar navbar-expand-lg navbar-dark" >
+            <a class="navbar-brand" href="#"><img src="{% static 'images/logo.jpg' %}" height="50" width="51" alt="logo"><span style="color: goldenrod;">FEEPAY</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav mr-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item active">
+                  <a class="nav-link" href="homepage" style="text-decoration: underline;"><span class="fa fa-home fa-lg"></span>HOME <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/index"><span class="fa fa-info fa-lg"></span>ABOUT US</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="#"><span class="fa fa-pen-square fa-lg mr-1"></span>FEEDBACK</a>
+                </li>
+                <li  class="nav-item active">
+                  <a class="nav-link" href="/log_out"><span class="fa fa-sign-out"></span>LOG OUT</a>
+                </li>
+                {% else %}
+                <li class="nav-item active">
+                  <a class="nav-link" href="homepage" ><span class="fa fa-home fa-lg"></span>HOME <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/index"><span class="fa fa-info fa-lg"></span>ABOUT US</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="#" style="text-decoration: underline;"><span class="fa fa-pen-square fa-lg mr-1"></span>FEEDBACK</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/register" ><span class="fas fa-sign-in-alt"></span>STUDENT LOGIN</a>
+                </li>
+                {% endif %}
+              </ul>
+              </div>
+          </nav>
+         
+        <div class="feedback">
+            <div class="containers mt-5 mb-5">
+                <div class="card feed-card">
+                    <div class="row row-content">
+                        <div class="col-8 col-md-9">
+                            
+                            <form class="feedform" action="feedback" method="post">
+                                {% csrf_token %} 
+                                <div class="form-group row justify-content-center">
+                                    <div class="col col-md-10 form-cntrl">
+                                        <input type="text" id="firstname" name="firstname" required>
+                                        <span class="text">First Name</span>
+                                        <span class="line"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <div class="col col-md-10 form-cntrl mt-5">
+                                        <input type="text" id="lastname" name="lastname" required>
+                                        <span class="text">Last Name</span>
+                                        <span class="line"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <div class=" col col-md-10 form-cntrl mt-5">
+                                        <input type="text" id="MobileNO" name="MobileNo"  pattern="^\d{10}$" oninvalid="this.setCustomValidity('Phone number should contain 10 digits!')" oninput="this.setCustomValidity('')" required >
+                                        <span class="text">Mobile Number</span>
+                                        <span class="line"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <div class="col col-md-10 form-cntrl mt-5">
+                                        <input type="email" id="mailId" name="mailId" required>
+                                        <span class="text">Email Id</span>
+                                        <span class="line"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <div class="col col-md-10 form-cntrl mt-5 mb-5 pb-2">
+                                        <textarea id="feedinfo" name="feedback" required></textarea>
+                                        <span class="text">Feedback</span>
+                                        <span class="line"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <div class="col col-md-10 form-cntrl mb-0">
+                                        <button type="submit" class="btn btn-warning btn-lg btan">Send Feedback</button> 
+                                        </div>
+                                </div>
+                                
+        
+                            </form>
+                        </div>
+                         <div class="d-none d-md-block col-md m-auto feedmsg">
+                                <p>Hope your work was done!!! Help us improve our service.<br>Please share feedback based on your experience.</p>
+                                
+                        </div>
+                   </div>    
+                </div>
+               
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <div class="container">
+                <div class="row">             
+                
+                    <div class="col-12 col-md-4 address">
+                      <h5>VISIT Us...</h5>
+                      <address>
+                        <div class="mapouter"><div class="gmap_canvas"><iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=247&amp;height=99&amp;hl=en&amp;q=Dr.B.B.Hegde First Grade College,Kundapura<br>                   [A Unit of Coondapur Education Society (R).Kundapura]                    Vishalakshi B.Hegde Campus,                    Kundapura, Udupi Dist,                    Karnataka-576201&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://www.fnfgo.com/">FNF Mods</a></div><style>.mapouter{position:relative;text-align:right;width:100%;height:99px;}.gmap_canvas {overflow:hidden;background:none!important;width:100%;height:99px;}.gmap_iframe {height:99px!important;}</style></div>
+                      Dr.B.B.Hegde First Grade College,Kundapura<br>
+                      [A Unit of Coondapur Education Society (R).Kundapura]
+                       Vishalakshi B.Hegde Campus,
+                       Kundapura, Udupi Dist,
+                       Karnataka-576201<br>
+                         
+                       </address>
+                    </div>
+                    <div class="col-12 col-md-3">
+                            <h5>QUICK LINKS</h5>
+                            <ul style="list-style-type: none;" class="quicklinks">
+                              <li><a href="/">HOME</a></li>
+                              <li><a href="/index">ABOUT</a></li>
+                              <li><a href="/feedback">FEEDBACK</a></li>
+                              <li><a href="/payexam">EXAM FEE</a></li>
+                              <li><a href="/clgform">COLLEGE FEE</a></li>
+                              <li><a href="concssion/">APPLY CONCESSION</a></li>
+    
+                            </ul>
+    
+                     </div>
+    
+                        
+                    <div class="col-12 col-md-5">
+                      <h5>CONNECT WITH US...</h5>
+                      <i class="fa fa-phone fa-lg"></i><a style="color: white;" href="tel:08254-235589">Call us at : 08254-235589</a><br>
+                      <i class="fa fa-envelope fa-lg"></i>: <a href="mailto:bbhegdecollegekundapur@rediffmail.com" class="link" style="color: aliceblue;">bbhegdecollegekundapur@rediffmail.com</a>
+                      <br>
+                      <a class="btn btn-social-icon btn-google mr-3" href="https://bbhegdecollege.in/" target="blank"><i class="fa fa-google-plus fa-lg"></i> </a>
+                      
+                      <a class="btn btn-social-icon btn-facebook mr-3" href="https://www.facebook.com/Dr-BB-Hegde-First-Grade-College-BBHC-878478628896016/" target="blank"><i class="fa fa-facebook fa-lg"></i> </a>
+    
+                     <a class="btn btn-social-icon btn-google mr-3" href="https://youtube.com/channel/UC_YbvrqDgf_CS500hPEt2rw" target="blank"><i class="fa fa-youtube fa-lg"></i> </a>
+                      <a class="btn btn-social-icon btn-instagram" href="https://www.instagram.com/dr.bbhckundapura/?utm_medium=copy_link" target="blank"><i class="fa fa-instagram fa-lg"></i> </a>
+    
+    
+                    </div>
+               </div>
+            </div>
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        {% if messages %}
+               
+        {% for message in messages %}
+             <script>
+                $(document).ready(function () {
+                alert('{{message}}');
+            });
+            </script>
+        {% endfor %}
+   
+{% endif %}        
+                  
+    </body>
+</html>

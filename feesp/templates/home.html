@@ -1,0 +1,468 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=yes">
+    <script src="https://kit.fontawesome.com/64d58efce2.js"
+         crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/stylehome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.min.css" integrity="sha512-f8mUMCRNrJxPBDzPJx3n+Y5TC5xp6SmStstEfgsDXZJTcxBakoB5hvPLhAfJKa9rCvH+n3xpJ2vQByxLk4WP2g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Aclonica&family=Berkshire+Swash&family=Carter+One&family=Cinzel+Decorative:wght@700&family=Poppins:wght@100&display=swap&family=Merienda&display=swap" rel="stylesheet">
+    <title>Fee Pay</title>
+    <link rel="icon" href="{% static 'images/flogo.png' %}" type="png">
+</head>
+<body onload="loadfun()">
+    <div id="loader" style="position:fixed; width:100%; height:100vh; background:#000 url('../static/images/logo.jpg') no-repeat center; z-index:99999;">
+
+    </div>
+    <section id="header" class="about">
+        <nav class="navbar navbar-expand-lg navbar-dark" >
+            <a class="navbar-brand" href="#"><img src="{% static 'images/logo.jpg' %}" height="50" width="51" alt="logo"><span style="color: goldenrod;">FEEPAY</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav mr-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item active">
+                  <a class="nav-link" href="#" style="text-decoration: underline;"><span class="fa fa-home fa-lg"></span>HOME <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/index"><span class="fa fa-info fa-lg"></span>ABOUT US</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/feedback"><span class="fa fa-pen-square fa-lg mr-1"></span>FEEDBACK</a>
+                </li>
+                <span  class="nav-item active">
+                  <a class="nav-link" href="/log_out"><span class="fa fa-sign-out"></span>LOG OUT</a>
+                </span>
+                {% else %}
+                <li class="nav-item active">
+                  <a class="nav-link" href="#"  style="text-decoration: underline;"><span class="fa fa-home fa-lg"></span>HOME <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/index"><span class="fa fa-info fa-lg"></span>ABOUT US</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/feedback"><span class="fa fa-pen-square fa-lg mr-1"></span>FEEDBACK</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/register" ><span class="fas fa-sign-in-alt"></span>STUDENT LOGIN</a>
+                </li>
+                {% endif %}
+              </ul>
+              </div>
+          </nav>
+         
+          <div>
+            {% if context.siteEnable == True %}
+            
+              <marquee><a class="glow" href="#expay">The examination fee payment site is active</a></marquee>
+            {% endif %}
+          </div>
+          <div id="carousel" class="carousel slide" data-ride="carousel">
+            
+            <div class="carousel-controls">
+              
+              <ol class="carousel-indicators">
+                <li data-target="#carousel" data-slide-to="0"  class="active"></li>
+                <li data-target="#carousel" data-slide-to="1"></li>
+                <li data-target="#carousel" data-slide-to="2"></li>
+              </ol>
+              
+              <div class="carousel-inner">
+                 
+                <div class="carousel-item active" style="background-image: url(../static/images/1.jpg);">
+                  <div class="container">
+                    
+                    <section id="welcome" class="wow bounceInUp">
+                      
+                      <div class="container">
+                        <div data-wow-iteration="3" class="welcome text-center wow " id="wel1">
+                          <h1>Welcome to Dr. B. B. Hegde First Grade College, Kundapura</h1>
+                          <h2> Fees Payment Portal</h2>
+                          <p>Pay Academic Fees and Semester Examination Fees Online</p>
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </div>
+                
+                <div class="carousel-item" style="background-image: url(../static/images/slide2.jpg);">
+                  <div class="container">
+                    <section id="welcome" class="wow bounceInUp">
+                      <div class="container">
+                        <div data-wow-iteration="3" class="welcome text-center wow " id="wel2">
+                          <h2 >Moulding The Future Generation For A Better Future</h2>
+                        <p> Dr. B.B.Hegde First Grade College, Kundapura, affiliated to the Mangalore University, 
+                        was established in the year 2010 under the aegis of Coondapur Education Society (R.) 
+                        with a desire to provide quality degree education for building the future generation 
+                        for a better tomorrow.With the dynamic leadership of the President of the Coondapur 
+                        Education Society (R), Sri B.M.Sukumar Shetty and the constant support and encouragement 
+                        of the managing committee and the governing council. <emp>The college could carve a niche for 
+                        itself among the renowned institutions affiliated to the Mangalore University.</emp>
+                        </p>
+                        </div>
+                      </div>
+                    </section>   
+                  </div>
+                </div>
+                
+                <div class="carousel-item" style="background-image: url(../static/images/slide3.jpg);">
+                  <div class="container">
+                    <section id="welcome" class="wow bounceInUp">
+                      <div class="container">
+                        <div data-wow-iteration="3" class="welcome text-center wow " id="wel2">
+                          <h2>The President's Message</h2>
+                            <p>I am very happy to be associated with the Educational institutions. I consider education is an ennobling 
+                              process of growth. Motivate the weak and address the average is the underlying principle of our institutions.
+                              We strive to empower,embolden and support the weak and thr deprived in their aspirations and pursuits. <em>I am
+                              indeed facinated to work for this noble cause as i feel the duty of life fulfilled here. I welcome all the 
+                              students joining our institution on a facinating journey of self-discovrey- and development.</em><br>
+                              <em>May Goddess Mookambika shower her blessings on us all..</em> <br><br>
+                              With Regards<br>
+                              Sri B. M. Sukumar Shetty<br>
+                              </p>
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </div>
+                
+              </div>
+              <a class="carousel-control-prev"  role="button" href="#carousel" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden"></span>
+              </a>
+              <a class="carousel-control-next" role="button" href="#carousel" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden"></span>
+              </a>
+            </div>
+          </div>
+          
+    </section>
+    <!------------------------welcome text-->
+   
+      <!-----Accordion-->
+      <section class="background" style= "opacity:rgba(0,0,0,0.5);">
+        <section id="Info" class="photo">
+        
+        <div class="container">
+          
+          <div class="accordion" id="accordionExample">
+            
+            <div class="card"  id="frame1" > <!--style="background:rgba(0,0,0,0.5);"-->
+            
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  
+                  <button class="btn btn-link acc_header" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" >
+                          
+                   {{clg.president_name}} (PRESIDENT)<i class="fa fa-caret-down fa-lg"></i>
+                  
+                  </button>
+              
+                </h5>
+              </div>
+            
+             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+              
+              <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 col-md-3 align-self-center wow fadeInLeft">
+                                <img class="d-block img-fluid" src="../media/{{clg.president_image}}" alt="college">
+                            </div>
+                            <div class="col-12 col-md-9 text-center wow fadeInDown">
+                          
+                                <p>{{clg.president_info}}</p>
+                            </div>
+                          
+                        </div>
+                    </div>
+                </div>
+             
+              </div>
+            </div>
+         
+            <div class="card" id="frame2">
+              <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed acc_header" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    {{clg.principal_name}} (PRINCIPAL)<i class="fa fa-caret-left fa-lg"></i>
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+                  <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-3 align-self-center wow fadeInLeft">
+                            <img class="d-block img-fluid" src="../media/{{clg.principal_image}}" alt="college">
+                        </div>
+                        <div class="col-12 col-md-9 text-center wow fadeInDown">
+                            <p>{{clg.principal_info}}</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+              </div>
+            </div>
+          
+            <div class="card"  id="frame3">
+              <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed acc_header" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    {{clg.vice_principal_name}}(VICE-PRINCIPAL)<i class="fa fa-caret-left fa-lg"></i>
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body">
+                  <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-3 align-self-center wow fadeInLeft">
+                            <img class="d-block img-fluid" src="../media/{{clg.vice_principal_image}}" alt="college">
+                        </div>
+                        <div class="col-12 col-md-9 text-center wow fadeInDown">
+                            <p>{{clg.vice_principal_info}}</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+              </div>
+           
+            </div>
+          
+          </section>
+         </div>
+        </div>
+     
+        <!-------------------PAYMENT OPTIONS-->
+        <section id="payment" class="back">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 text-center wow fadeInLeft">
+              <img src="{% static 'images/academicfee.jpg' %}" width="300" height="300" class="img-fluid">
+            </div>
+            <div class="col-md-6 pay wow fadeInRight">
+              {% if user.is_authenticated %}
+              <h3><u>Academic Fees Payment</u></h3>
+              <p class="text-justify "><b>In this Fees Payment system user is provided Academic Fees Form, by filling this form details, user can make payment and also gain the Academic fees details like amount for 
+                 each course. User can pay the fees any time from anywhere.When fees payment is done, an email will be sent to registered mail Id. It helps you to Pay your fees sitting at home online and get the receipt of the same. Download or print the receipt for future usage.<br>
+               <span style="color: red;">**Installments are available</span></p>
+               <a href="clgform"><button type="button" class="btn acad-btn">Pay Academic Fees</button></a>
+              </b></p>
+              {% else %}
+              <h3><u>Academic Fees Payment</u></h3>
+              <p class="text-justify "><b>In this Fees Payment system user is provided Academic Fees Form, by filling this form details, user can make payment and also gain the Academic fees details like amount for 
+                each course. User can pay the fees any time from anywhere.When fees payment is done, an email will be sent to registered mail Id. It helps you to Pay your fees sitting at home online and get the receipt of the same. Download or print the receipt for future usage.
+                "You can able to pay the academic fees only after you are logged in to this site."<br>
+               <span style="color: red;">**Installments are available</span></b></p>
+              {% endif %}
+            </div>
+          </div>
+          <div class="row concession" style="background-color: rgb(0, 0, 10); color:antiquewhite">
+            <div class="col-12 order-md-first wow fadeInLeft">
+              <h3>APPLY FOR CONCESSION.........</h3>
+              <p>
+                The students can apply for concession over their fees. There are three types of concession available for the students. If eligible you can apply for any one of the following concessions.<br>
+                Upload the required document and after verification, you would receive mail about your concession application and then you can avail the specified concession. After aproval of your concession proceed ahead to pay your academic fees. :-
+                </p>
+                
+               <div class="row justify-content-center">
+                <div class="card col-md-3 col-10" style="justify-content: center;" id="concesion-card">
+                  
+                    <div class="title">Girls student Concession</div>
+                  
+                    <div class="icon">
+                      <i class="fa fa-female"></i>
+                    </div><!--/icon-->
+                  
+                    <div class="features">
+                      <ul>
+                        <li>
+                          <p>
+                            Empowering the girls' education by providing concession of {{conc2}}%<br><br>
+                            <b>Required Document:</b><br>
+                            Scanned copy of Aadhar card or Birth certificate
+      
+                          </p>
+                        </li>
+                      </ul>
+                    </div><!--/features-->
+                </div><!--/card-->
+                
+                <div class="card col-md-4 col-10" id="concesion-card"> 
+                  
+                  <div class="title">Scholarship for 90% and above</div>
+                  <div class="icon">
+                    <i class="fa fa-user-graduate"></i>
+                  </div><!--/icon-->
+
+                  <div class="features">
+                    <ul>
+                      <li>
+                        <p>
+                          If you have scored 90% or above agregate in last year.Then you can avail {{conc1}}% off on your current acamedic year fees.<br><br>
+                          <b>Required Document:</b><br>
+                          Previous year marks card indicating that you have scored above 90% in academics.<br>
+                          One Document containing both the semester's markcard should be uploades.
+    
+                        </p>
+                      </li>
+                    </ul>
+                  </div>
+                </div><!--/card-->
+            
+              
+                <div class="card col-md-3 col-10" id="concesion-card">
+                  
+                    <div class="title">SC/ST Concession</div>
+                  
+                    <div class="icon">
+                      <i class="fa fa-users"></i>
+                    </div><!--/icon-->
+                  
+                    <div class="features">
+                      <ul>
+                        <li>
+                          <p>
+                            Students of Scheduled Caste and Scheduled Tribes can avail concession of {{conc3}}%<br><br>
+                            <b>Required Document:</b><br>
+                            Scanned copy of Caste Certificate
+      
+                          </p>
+                        </li>
+                      </ul>
+                    </div><!--/features-->
+                  </div>
+                </div>
+              </div>        
+            <div class="row applybtn"> 
+            <div class="col-md-12">
+              <br><p><span>Note****</span> you can only apply for any one of the above scholarships</p><br>
+                
+              {% if user.is_authenticated %}
+                
+              <p><a href="concssion/"><button type="button" class="btn concession-btn col-9 col-md-5" id="buton"><b>Apply for Concession</b></button></a>
+              </p>
+              {% endif %}
+                
+            </div>
+            </div>   
+          </div>
+          <div class="row">
+            <div class="col-md-6 text-center order-md-last wow fadeInRight" >
+              <img src="{% static 'images/examfee.jpg' %}" height="300" width="300" class="img-fluid">
+            </div>
+            <div class="col-md-6 order-md-first pay wow fadeInLeft" id="expay">
+              {% if user.is_authenticated %}
+              <h3><u>Examination Fees Payment</u></h3>
+              <p class="text-justify "><b>In the Examination Fees Payment section, Exam Fees Form is provided. Do fill it carefully entering all the necessary details accurately. In the traditonal system students had to  get the exam-fees form 
+                from the college. So,if you are using this portal you need not take headache for form. It also provides the Exam fees details like amount for each subject of current semester. There is provision to apply for backlog subjects also. While filling the form ensure that you select all the subjects for which you want to attend exam. Do print the receipt and filled Examination Form.
+  
+              </b></p>
+               <a href="/payexam"><button type="button" class="btn acad-btn">Pay Examination Fees</button></a>
+              </p>
+              {% else %}
+              <h3><u><b>Examination Fees Payment</u></h3>
+              <p class="text-justify ">In the Examination Fees Payment section, Exam Fees Form is provided. Do fill it carefully entering all the necessary details accurately. In the traditonal system students had to  get the exam-fees form 
+                from the college. So,if you are using this portal you need not take headache for form. It also provides the Exam fees details like amount for each subject of current semester. There is provision to apply for backlog subjects also. While filling the form ensure that you select all the subjects for which you want to attend exam. Do print the receipt and filled Examination Form.
+               "You can pay the exmination fees only after registerd to this site."
+                <br><span style="color: red;">**Note that :</span> The filled Examination form must be submitted to college later.<br>
+              </b></p>
+              {% endif %}
+            </div>
+          </div>
+        </section>
+      </section>
+      <footer class="footer">
+        <div class="container">
+            <div class="row">             
+            
+                <div class="col-12 col-md-4 address">
+                  <h5>VISIT Us...</h5>
+                  <address>
+                    <div class="mapouter"><div class="gmap_canvas"><iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=247&amp;height=99&amp;hl=en&amp;q=Dr.B.B.Hegde First Grade College,Kundapura<br>                   [A Unit of Coondapur Education Society (R).Kundapura]                    Vishalakshi B.Hegde Campus,                    Kundapura, Udupi Dist,                    Karnataka-576201&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://www.fnfgo.com/">FNF Mods</a></div><style>.mapouter{position:relative;text-align:right;width:100%;height:99px;}.gmap_canvas {overflow:hidden;background:none!important;width:100%;height:99px;}.gmap_iframe {height:99px!important;}</style></div>
+                  Dr.B.B.Hegde First Grade College,Kundapura<br>
+                  [A Unit of Coondapur Education Society (R).Kundapura]
+                   Vishalakshi B.Hegde Campus,
+                   Kundapura, Udupi Dist,
+                   Karnataka-576201<br>
+                     
+                   </address>
+                </div>
+                <div class="col-12 col-md-3">
+                        <h5>QUICK LINKS</h5>
+                        <ul style="list-style-type: none;" class="quicklinks">
+                          <li><a href="/">HOME</a></li>
+                          <li><a href="/index">ABOUT</a></li>
+                          <li><a href="/feedback">FEEDBACK</a></li>
+                          <li><a href="/payexam">EXAM FEE</a></li>
+                          <li><a href="/clgform">COLLEGE FEE</a></li>
+                          <li><a href="concssion/">APPLY CONCESSION</a></li>
+
+                        </ul>
+
+                 </div>
+
+                    
+                <div class="col-12 col-md-5">
+                  <h5>CONNECT WITH US...</h5>
+                  <i class="fa fa-phone fa-lg"></i><a style="color: white;" href="tel:08254-235589">Call us at : 08254-235589</a><br>
+                  <i class="fa fa-envelope fa-lg"></i>: <a href="mailto:bbhegdecollegekundapur@rediffmail.com" class="link" style="color: aliceblue;">bbhegdecollegekundapur@rediffmail.com</a>
+                  <br>
+                  <a class="btn btn-social-icon btn-google mr-3" href="https://bbhegdecollege.in/" target="blank"><i class="fa fa-google-plus fa-lg"></i> </a>
+                  
+                  <a class="btn btn-social-icon btn-facebook mr-3" href="https://www.facebook.com/Dr-BB-Hegde-First-Grade-College-BBHC-878478628896016/" target="blank"><i class="fa fa-facebook fa-lg"></i> </a>
+
+                 <a class="btn btn-social-icon btn-google mr-3" href="https://youtube.com/channel/UC_YbvrqDgf_CS500hPEt2rw" target="blank"><i class="fa fa-youtube fa-lg"></i> </a>
+                  <a class="btn btn-social-icon btn-instagram" href="https://www.instagram.com/dr.bbhckundapura/?utm_medium=copy_link" target="blank"><i class="fa fa-instagram fa-lg"></i> </a>
+
+
+                </div>
+           </div>
+        </div>
+    </footer>
+    {% if messages %}
+               
+                    {% for message in messages %}
+                         <script>
+                            $(document).ready(function () {
+                            alert('{{message}}');
+                        });
+                        </script>
+                    {% endfor %}
+               
+    {% endif %} 
+      <!----------------------Animation------------------->
+      <script src="{% static 'js/wow.min.js' %}"></script>
+      <script src="{% static 'js/loader.js' %}"></script>
+      <script>
+        new WOW().init();
+      </script>
+      <script>
+        $(document).ready(function(){
+          $('#carousel').carousel({interval:false});
+          $('.collapse').on('shown.bs.collapse', function() { 
+            $(this).parent().find('.fa-caret-left').removeClass('fa-caret-left').addClass('fa-caret-down');
+          }).on('hidden.bs.collapse', function() { 
+            $(this).parent().find('.fa-caret-down').removeClass('fa-caret-down').addClass('fa-caret-left');
+          })
+          
+        });
+
+      </script>
+
+</body>
+</html>
